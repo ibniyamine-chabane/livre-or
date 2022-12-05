@@ -61,7 +61,7 @@
                             $request_info = $connectDatabase2->query($update);
                             $_SESSION['login'] = $login;
                             $message = "Votre login et mot de passe a bien été modifier"; 
-                            //header("Location:connexion.php");    
+                            header("Location:profil.php");    
                         }
 
                 } else {
