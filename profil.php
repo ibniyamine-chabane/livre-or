@@ -14,7 +14,7 @@
         $request = $connectDatabase->query('SELECT login , password FROM utilisateurs');
         $data = $request->fetch_all();  //je recupere tous les donné en une fois avec fetch_all.
         
-        // nouvelle requete pour avoir le pré-remplis de l'utilisateur connecté
+                // nouvelle requete pour avoir le pré-remplis de l'utilisateur connecté
         $connectDatabase2 = mysqli_connect("localhost", "root", "", "livreor",3307);
         $filled = $_SESSION['login'];
         $sql_select = "SELECT `login` , `password` FROM utilisateurs WHERE login = '$filled'";
@@ -37,7 +37,7 @@
 
                 if ($password == $password_confirm) {// si password et password_confirm sont identique
 
-                        $loginOk = false;
+                        $loginTaken = true;
                         
                         foreach ($data as $user) { // Je lis dans le tableau de la base de donées avec une boucle
 
@@ -46,17 +46,22 @@
                             if ( $login == $user[0] ) { //une condition dans le cas ou le login existe déja 
 
                                 $message = "le login est déja pris";
-                                $loginOk = false;
+                                $loginTaken = true;
                                 break;
                             } else {
-                                $loginOk = true;
+                                $loginTaken = false;
                             }
                             //echo 'post : '. $_POST['login']; // echo utiliser pour afficher les tests
                             //var_dump($loginOk); //
                             //var_dump($data); 
                         }
 
-                    
+                        if ( $loginTaken == false) { // on insert l'user dans la bdd et on fait une redirection vers la page connexion
+                            $update = "UPDATE `utilisateurs` SET `login` = '$login', `password` = '$password' WHERE `utilisateurs`.`login` = '$filled'";
+                            $request_info = $connectDatabase2->query($update);
+                            $message = "Votre login et mot de passe a bien été modifier"; 
+                            //header("Location:connexion.php");    
+                        }
 
                 } else {
                     $message = "le mot de passe de confirmation n'est pas identique!";
@@ -82,14 +87,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="widthfr, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Inscription</title>
+    <title>Profil</title>
 </head>
 <body>
     <?php include("header.php"); ?>
     <main>
         <section>
             <div class="container-form">
-                <h1>Inscription</h1>
+                <h1>Votre profil</h1>
                 <p class="msg-error"><?= $message ?></p>
                 <form method="post">
                     <label for="flogin">Login</label>
