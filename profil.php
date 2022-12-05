@@ -59,6 +59,7 @@
                         if ( $loginTaken == false) { // on insert l'user dans la bdd et on fait une redirection vers la page connexion
                             $update = "UPDATE `utilisateurs` SET `login` = '$login', `password` = '$password' WHERE `utilisateurs`.`login` = '$filled'";
                             $request_info = $connectDatabase2->query($update);
+                            $_SESSION['login'] = $login;
                             $message = "Votre login et mot de passe a bien été modifier"; 
                             //header("Location:connexion.php");    
                         }
