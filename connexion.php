@@ -15,14 +15,17 @@ $message = "";
                 $login = $_POST['login'];
                 $password = $_POST['password'];
                 $logged = false;
+
                 
                 foreach ($data as $user) { //je lis le contenu de la table $con de la BDD
     
-                    if ($login === $user[0] &&
-                    $password === $user[1]) {
+                    if ($login === $user[1] &&
+                    $password === $user[2]) {
                         //$message = "vous etes connecter"; // test pour afficher si on est connecté 
                         
                         $_SESSION['login'] = $login;
+                        $id = $user[0];
+                        $_SESSION['id'] = $id;
                         $logged = true;
                         break;
                     } else {

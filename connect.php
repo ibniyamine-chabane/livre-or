@@ -8,7 +8,7 @@ $database_Name = 'livreor';
 
 $con = mysqli_connect($database_Host, $database_User, $database_Pass, $database_Name, 3307);
 //$con = mysqli_connect($database_Host, $database_User, $database_Pass, $database_Name, 3307);
-$request = $con->query('SELECT `login`, `password` FROM utilisateurs');
+$request = $con->query('SELECT * FROM utilisateurs');
 $data = $request->fetch_All();
 
 if ( mysqli_connect_error() ) {
