@@ -24,8 +24,8 @@ $message = "";
                         //$message = "vous etes connecter"; // test pour afficher si on est connecté 
                         
                         $_SESSION['login'] = $login;
-                        $id = $user[0];
-                        $_SESSION['id'] = $id;
+                        $id = $user[0];  //Je récupère l'index qui correspond a L'ID de l'utilisateur
+                        $_SESSION['id'] = $id; // cet ID servira pour la page commentaire .
                         $logged = true;
                         break;
                     } else {

@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 $message = "";
 
 $connectDatabase = mysqli_connect("localhost", "root", "", "livreor",3307);
@@ -11,6 +11,7 @@ $data = $request->fetch_all();
     if (isset($_POST['submit'])) {
         $comment = $_POST['comment'];
         $send_comment = false;
+        $userId = $_SESSION['id'];
 
         if (isset($comment) && !empty($comment)) {
             $send_comment = true;
@@ -20,7 +21,7 @@ $data = $request->fetch_all();
         }
 
         if ($send_comment) {
-            $request = $connectDatabase->query("INSERT INTO commentaires(commentaire,id_utilisateur,date) VALUES ('$comment', 1, NOW())");
+            $request = $connectDatabase->query("INSERT INTO commentaires(commentaire,id_utilisateur,date) VALUES ('$comment', '$userId', NOW())");
             //header("Location:commentaire.php");
         }
 
