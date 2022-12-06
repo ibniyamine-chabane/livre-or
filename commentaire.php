@@ -1,5 +1,9 @@
 <?php 
 session_start();
+if (!$_SESSION['login']) {
+    header("Location:livre-or.php");
+} 
+
 $message = "";
 
 $connectDatabase = mysqli_connect("localhost", "root", "", "livreor",3307);
