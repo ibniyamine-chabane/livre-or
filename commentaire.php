@@ -7,7 +7,7 @@ $request = $connectDatabase->query('SELECT * FROM commentaires');
 $data = $request->fetch_all();
 
     var_dump($data);
-    //echo $data[0][2];
+    
     if (isset($_POST['submit'])) {
         $comment = $_POST['comment'];
         $send_comment = false;
@@ -22,7 +22,6 @@ $data = $request->fetch_all();
 
         if ($send_comment) {
             $request = $connectDatabase->query("INSERT INTO commentaires(commentaire,id_utilisateur,date) VALUES ('$comment', '$userId', NOW())");
-            //header("Location:commentaire.php");
         }
 
     }
@@ -40,6 +39,7 @@ $data = $request->fetch_all();
 </head>
 <body>
     <main> 
+        <?php include("header.php");  ?>
         <section>
             <form method="post">
                 <?= $message ?>
