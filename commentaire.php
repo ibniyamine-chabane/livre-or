@@ -13,7 +13,7 @@ $data = $request->fetch_all();
     var_dump($data);
     
     if (isset($_POST['submit'])) {
-        $comment = $_POST['comment'];
+        $comment = htmlspecialchars($_POST['comment'], ENT_QUOTES);
         $send_comment = false;
         $userId = $_SESSION['id'];
 
