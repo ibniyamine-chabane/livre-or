@@ -6,11 +6,12 @@
         }
 
         $message = ""; // variable d'affichage de message d'erreur à déclarer pour éviter un message  d'erreur.
+        $already_exist_login = "";
 
-
-        //je me connecte à la base de donnée moduleconnexion et je récupère les donnée de la table avec $data.
+                //je me connecte à la base de donnée moduleconnexion et je récupère les donnée de la table avec $data.
         $connectDatabase = mysqli_connect("localhost", "root", "", "livreor",3307);
-        //$connectDatabase = mysqli_connect("localhost", "root", "", "livreor",3307);
+
+                //$connectDatabase = mysqli_connect("localhost", "root", "", "livreor",3307);
         $request = $connectDatabase->query('SELECT login , password FROM utilisateurs');
         $data = $request->fetch_all();  //je recupere tous les donné en une fois avec fetch_all.
         
@@ -22,64 +23,81 @@
         $user_info = $request_info->fetch_all();
         var_dump($user_info);
         $login_prefilled = $user_info[0][0];
-        $password_prefilled = $user_info[0][1];
-        //echo $user_info[0][0];
 
-        
-        if (isset($_POST["submit"])) { // si j'appuie sur le boutton submit
+        if (isset($_POST['submit'])) {
+
+            if ( $_POST['current_password'] && $_POST['new_password'] && $_POST['password_confirm']) {
+
+                $current_password = trim($_POST['current_password']); 
+                $new_password   = trim($_POST['new_password']);
+                $password_confirm = trim($_POST['password_confirm']);
+                $change_password_ok = false;
+                $current_password_check = false;
                 
-                    
-            if ($_POST['login'] && $_POST['password'] && $_POST['password_confirm']) { // si tous les champs sont remplis
+                foreach ($data as $user_password_db) {
 
-                $login      = $_POST['login'];
-                $password   = $_POST['password'];
-                $password_confirm = $_POST['password_confirm'];
+                    if ( $current_password != $user_password_db[1] ) {
+                        $message = "le mot de passe actuel ne correspond pas";
+                    } else {
+                        $message = "Correspond!";
+                        $current_password_check = true; 
+                    }
 
-                if ($password == $password_confirm) {// si password et password_confirm sont identique
+                    if ( $new_password == $password_confirm ) {
+                        $message = "les mdp correpond!!";
+                        $change_password_ok = true;
+                    } else {
+                        $message = "les nouveau mot de passe ne correspond !!";
+                    }
 
-                        $loginTaken = true;
-                        
-                        foreach ($data as $user) { // Je lis dans le tableau de la base de donées avec une boucle
+                    if ( $change_password_ok = true && $current_password_check = true ) {
+                        $update = "UPDATE `utilisateurs` SET `password` = '$new_password' WHERE `utilisateurs`.`login` = '$filled'";
+                        $request_change_password = $connectDatabase->query($update);
+                        header("Location:profil.php");
+                    }
 
-                            //echo $user[0].'</br>'; //test sur l'index $user
-                                   
-                            if ( $login == $user[0] ) { //une condition dans le cas ou le login existe déja 
-
-                                $message = "le login est déja pris";
-                                $loginTaken = true;
-                                break;
-                            } else {
-                                $loginTaken = false;
-                            }
-                            //echo 'post : '. $_POST['login']; // echo utiliser pour afficher les tests
-                            //var_dump($loginOk); //
-                            //var_dump($data); 
-                        }
-
-                        if ( $loginTaken == false) { // on insert l'user dans la bdd et on fait une redirection vers la page connexion
-                            $update = "UPDATE `utilisateurs` SET `login` = '$login', `password` = '$password' WHERE `utilisateurs`.`login` = '$filled'";
-                            $request_info = $connectDatabase2->query($update);
-                            $_SESSION['login'] = $login;
-                            $message = "Votre login et mot de passe a bien été modifier"; 
-                            header("Location:profil.php");    
-                        }
-
-                } else {
-                    $message = "le mot de passe de confirmation n'est pas identique!";
                 }
-
+                
             } else {
-                $message= "vous devez remplir tous les champs !";
+                $message = "vous devez remplir tous les champ mot de passe !";
             }
 
-        }    
+
+            if ( $_POST['login'] && $_POST['current_password'] ) {
+                
+                $new_login = htmlspecialchars(trim($_POST['login']));   
+                $current_password = htmlspecialchars(trim($_POST['current_password'])); 
+
+                foreach ($data as $user_login_db) {
+                    
+                    $user_password_db = $user_login_db[1];
+                    $user_login_ok = false;
+                          // condition pour changer le login avec validation du mdp actuel 
+                    if ( $filled == $user_login_db[0] && !empty($new_login) && 
+                    $current_password == $user_password_db ) {
+        
+                        $update = "UPDATE `utilisateurs` SET `login` = '$new_login'  WHERE `utilisateurs`.`login` = '$filled'";
+                        $request_change_password = $connectDatabase->query($update);
+                        $message = "Succes !!";
+                        $_SESSION['login'] = $new_login;
+                        header("Location:profil.php");
+
+                    } else {
+                        $message = "erreur sur le mot de passe actuel";
+                    }    
+                        // condition si le login existe déjà dans la bdd
+                    if ( $new_login == $user_login_db[0] && $new_login != $filled ) {
+                        $message = "le login est déjà pris";
+                        break;
+                    } 
+                    
+                }
+            }
+        }
+
+                    
 
 
-       //echo $user[0];
-
-
-//var_dump($data);
-//var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -98,12 +116,15 @@
                 <h1>Votre profil</h1>
                 <p class="msg-error"><?= $message ?></p>
                 <form method="post">
+                    <p><?= $already_exist_login; ?>
                     <label for="flogin">Login</label>
-                    <input type="text" name="login" value=<?= $login_prefilled ?> placeholder="Choisissez votre login">
+                        <input type="text" name="login" value=<?= $login_prefilled ?> placeholder="Choisissez votre login">
+                    <label for="fcurrentpassword">renseigner votre mot de passe actuel</label>
+                        <input type="password" name="current_password" placeholder="votre mot de passe actuel">
                     <label for="fpassword">Mot de Passe</label>
-                    <input type="password" value=<?= $password_prefilled ?> name="password" placeholder="Mot de Passe">
-                    <input type="password" name="password_confirm" placeholder="Confirmer le mot de Passe">
-                    <input type="submit" name="submit" value="valider">
+                        <input type="password" value="" name="new_password" placeholder="Mot de Passe">
+                        <input type="password" name="password_confirm" placeholder="Confirmer le mot de Passe">
+                        <input type="submit" name="submit" value="valider">
                 </form>
             </div>
         </section> 

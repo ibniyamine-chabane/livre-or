@@ -7,7 +7,7 @@ $database_Pass = '';
 $database_Name = 'livreor';
 
 $con = mysqli_connect($database_Host, $database_User, $database_Pass, $database_Name, 3307);
-$request = $con->query('SELECT `date` , `login` , `commentaire` FROM utilisateurs INNER JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur');
+$request = $con->query('SELECT `date` , `login` , `commentaire` FROM utilisateurs INNER JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur ORDER BY `date` DESC ');
 $data = $request->fetch_All();
 
 var_dump($data);

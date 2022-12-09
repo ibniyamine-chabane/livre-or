@@ -19,9 +19,9 @@
                     
             if ($_POST['login'] && $_POST['password'] && $_POST['password_confirm']) { // si tous les champs sont remplis
 
-                $login      = $_POST['login'];
-                $password   = $_POST['password'];
-                $password_confirm = $_POST['password_confirm'];
+                $login      = htmlspecialchars(trim($_POST['login']));
+                $password   = htmlspecialchars(trim($_POST['password']));
+                $password_confirm = htmlspecialchars(trim($_POST['password_confirm']));
 
                 if ($password == $password_confirm) {// si password et password_confirm sont identique
 
