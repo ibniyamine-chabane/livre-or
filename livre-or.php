@@ -30,8 +30,10 @@ $data = $request->fetch_All();
         </thead>
         <tbody>
             <?php foreach ($data as $info) {
+                $dateold = $info[0];
+                $date = date('d-m-Y H:i:s', strtotime($dateold));
                 echo '<tr>
-                        <td>'.$info[0].'</td>
+                        <td>'.$date.'</td>
                         <td>'.$info[1].'</td>
                         <td>'.$info[2].'</td>
                       </tr>';
