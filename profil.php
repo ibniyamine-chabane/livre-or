@@ -121,7 +121,7 @@
                     <label for="fcurrentpassword">renseigner votre mot de passe actuel pour tout changement</label>
                         <input type="password" name="current_password" placeholder="votre mot de passe actuel">
                     <label for="fpassword">Mot de Passe</label>
-                        <input type="password" value="" name="new_password" placeholder="Mot de Passe">
+                        <input type="password" value="" name="new_password" placeholder="Nouveau mot de Passe">
                         <input type="password" name="password_confirm" placeholder="Confirmer le mot de Passe">
                         <input type="submit" name="submit" value="valider">
                 </form>

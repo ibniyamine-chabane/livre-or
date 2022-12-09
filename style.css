@@ -1,6 +1,6 @@
 @font-face {
     font-family: hight-school;
-    src: url(High-School.ttf);
+    src: url(import/High-School.ttf);
 }
 
 * {
@@ -9,10 +9,11 @@
     box-sizing: border-box;
 }
 body {
-    background-image: url("https://wallpaperaccess.com/full/356357.jpg");
+    background-image: url("import/plage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    overflow: ;
 }
 
 header {
@@ -63,4 +64,85 @@ li a {
     font-size: 75px;
     font-family: hight-school;
     padding-top: 29px;
+}
+
+/*****************inscription ****************************/
+
+.container-form {
+    max-width: 530px;
+    margin: auto;
+    max-width: 530px;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 4%;
+    padding: 28px;
+    border: 1px solid black;
+    border-radius: 13px;
+    box-shadow: 0px 0px 14px 0px;
+}
+
+table {
+    width: 460px;
+    margin: auto;
+    margin-top: 6%;
+}
+
+.container-admin {
+    max-width: 530px;
+    margin: auto;
+    max-width: 530px;
+    margin: auto;
+    margin-top: 8%;
+    margin-bottom: 4%;
+    padding: 28px;
+    border: 1px solid black;
+    border-radius: 13px;
+    box-shadow: 0px 0px 14px 0px;
+    background-color: #ffffff96;
+    font-family: monospace;
+}
+
+.container-home {
+    max-width: 530px;
+    margin: auto;
+    max-width: 530px;
+    margin: auto;
+    margin-top: 8%;
+    margin-bottom: 4%;
+    padding: 28px;
+    border: 1px solid black;
+    border-radius: 13px;
+    box-shadow: 0px 0px 14px 0px;
+}
+
+
+.container-form h1, label, .container-home h1{
+    color: white;
+    text-shadow: 1px 1px red;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    margin-right: 0px;
+    margin-left: 0px;
+    resize: vertical;
+}
+
+.msg-error {
+    color: red;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.space-bottom-connect {
+    margin-bottom: 165px;
 }
