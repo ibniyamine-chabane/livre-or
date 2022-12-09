@@ -3,3 +3,57 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    background-image: url("https://wallpaperaccess.com/full/356357.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+header {
+    height: 70px;
+    background: rgb(164,249,255);
+    background: -moz-linear-gradient(0deg, rgba(164,249,255,1) 28%, rgba(65,94,208,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(164,249,255,1) 28%, rgba(65,94,208,1) 100%);
+    background: linear-gradient(0deg, rgba(164,249,255,1) 20%, rgba(65,94,208,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a4f9ff",endColorstr="#415ed0",GradientType=1);
+}
+
+nav {
+    width: 60%;
+    height: 70px;
+    margin: auto;
+}
+
+header ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    height: 70px;
+    font-family: fantasy;
+    font-size: 22px;
+}
+
+li a {
+    color: oldlace;
+    text-decoration: none;
+}
+
+/******************** index.php ***************************/
+
+.display_container {
+    width: 75%;
+    height: 126px;
+    background-color: rgba(220, 220, 220, 0.316);
+    text-align: center;
+    padding-top: 10px;
+    margin: auto;
+    margin-top: 13%;
+    border-radius: 4px;
+}
+
+.display_container h1 {
+    color: #409b13;
+    font-size: 75px;
+}

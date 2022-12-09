@@ -10,7 +10,7 @@ $connectDatabase = mysqli_connect("localhost", "root", "", "livreor",3307);
 $request = $connectDatabase->query('SELECT * FROM commentaires');
 $data = $request->fetch_all();
 
-    var_dump($data);
+    //var_dump($data);
     
     if (isset($_POST['submit'])) {
         $comment = htmlspecialchars($_POST['comment'], ENT_QUOTES);

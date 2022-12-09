@@ -10,28 +10,33 @@
 
         //je me connecte à la base de donnée moduleconnexion et je récupère les donnée de la table avec $data.
         $connectDatabase = mysqli_connect("localhost", "root", "", "livreor",3307);
-        //$connectDatabase = mysqli_connect("localhost", "root", "", "livreor",3307);
+        //$connectDatabase = mysqli_connect("localhost:3306", "root", "", "livreor",3307);
         $request = $connectDatabase->query('SELECT login , password FROM utilisateurs');
         $data = $request->fetch_all();  //je recupere tous les donné en une fois avec fetch_all.
-        var_dump($data);
-        if (isset($_POST["submit"])) { // si j'appuie sur le boutton submit
+
+
+
+
+        // si j'appuie sur le boutton submit
+        if (isset($_POST["submit"])) { 
                 
-                    
-            if ($_POST['login'] && $_POST['password'] && $_POST['password_confirm']) { // si tous les champs sont remplis
+            // si tous les champs sont remplis        
+            if ($_POST['login'] && $_POST['password'] && $_POST['password_confirm']) { 
 
                 $login      = htmlspecialchars(trim($_POST['login']));
                 $password   = htmlspecialchars(trim($_POST['password']));
                 $password_confirm = htmlspecialchars(trim($_POST['password_confirm']));
 
-                if ($password == $password_confirm) {// si password et password_confirm sont identique
-
+                
+                // si password et password_confirm sont identique
+                if ($password == $password_confirm) {
                         $loginOk = false;
                         
-                        foreach ($data as $user) { // Je lis dans le tableau de la base de donées avec une boucle
-
-                            //echo $user[0].'</br>'; //test sur l'index $user
-                                   
-                            if ( $login == $user[0] ) { //une condition dans le cas ou le login existe déja 
+                        // Je lis dans le tableau de la base de donées avec une boucle
+                        foreach ($data as $user) { 
+                            
+                            //une condition dans le cas ou le login existe déjà 
+                            if ( $login == $user[0] ) { 
 
                                 $message = "le login est déja pris";
                                 $loginOk = false;
@@ -39,12 +44,11 @@
                             } else {
                                 $loginOk = true;
                             }
-                            //echo 'post : '. $_POST['login']; // echo utiliser pour afficher les tests
-                            //var_dump($loginOk); //
-                            //var_dump($data); 
+                
                         }
 
-                        if ( $loginOk ) { // on insert l'user dans la bdd et on fait une redirection vers la page connexion
+                        // on insert l'user dans la bdd et on fait une redirection vers la page connexion
+                        if ( $loginOk ) { 
                             $request = $connectDatabase->query("INSERT INTO utilisateurs(login, password) VALUES ('$login','$password')");
                             header("Location:connexion.php");    
                         }
@@ -59,12 +63,6 @@
 
         }    
 
-
-       //echo $user[0];
-
-
-//var_dump($data);
-//var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="fr">

@@ -42,10 +42,6 @@ $message = "";
             }
         }
 
-    //var_dump($_POST);
-    //var_dump($data);
-    //echo $user[1];
-
 ?>  
 <!DOCTYPE html>
 <html lang="en">

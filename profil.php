@@ -21,7 +21,7 @@
         $sql_select = "SELECT `login` , `password` FROM utilisateurs WHERE login = '$filled'";
         $request_info = $connectDatabase2->query($sql_select);
         $user_info = $request_info->fetch_all();
-        var_dump($user_info);
+        //var_dump($user_info);
         $login_prefilled = $user_info[0][0];
 
         if (isset($_POST['submit'])) {
@@ -116,10 +116,9 @@
                 <h1>Votre profil</h1>
                 <p class="msg-error"><?= $message ?></p>
                 <form method="post">
-                    <p><?= $already_exist_login; ?>
                     <label for="flogin">Login</label>
                         <input type="text" name="login" value=<?= $login_prefilled ?> placeholder="Choisissez votre login">
-                    <label for="fcurrentpassword">renseigner votre mot de passe actuel</label>
+                    <label for="fcurrentpassword">renseigner votre mot de passe actuel pour tout changement</label>
                         <input type="password" name="current_password" placeholder="votre mot de passe actuel">
                     <label for="fpassword">Mot de Passe</label>
                         <input type="password" value="" name="new_password" placeholder="Mot de Passe">

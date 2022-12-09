@@ -10,7 +10,15 @@
 <body>
     <?php session_start(); include("header.php");?>
     <main>
-        
+        <section>
+            <div class="display_container">
+                <?php if (!empty($_SESSION['login'])): ?>
+                    <h1>Bienvenu <?= $_SESSION['login'] ?></h1>
+                <?php else: ?>
+                    <h1>Bienvenue</h1>
+                <?php endif; ?>     
+            </div>
+        </section>
     </main>
 </body>
 </html>
