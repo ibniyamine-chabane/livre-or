@@ -13,7 +13,7 @@
         <section>
             <div class="display_container">
                 <?php if (!empty($_SESSION['login'])): ?>
-                    <h1>Bienvenu <?= $_SESSION['login'] ?></h1>
+                    <h1>Bienvenue <?= $_SESSION['login'] ?></h1>
                 <?php else: ?>
                     <h1>Bienvenue</h1>
                 <?php endif; ?>     

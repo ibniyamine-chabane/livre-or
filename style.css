@@ -1,3 +1,8 @@
+@font-face {
+    font-family: hight-school;
+    src: url(High-School.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -56,4 +61,6 @@ li a {
 .display_container h1 {
     color: #409b13;
     font-size: 75px;
+    font-family: hight-school;
+    padding-top: 29px;
 }
