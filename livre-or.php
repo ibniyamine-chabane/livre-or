@@ -22,24 +22,34 @@ $data = $request->fetch_All();
 </head>
 <body>
 <?php include("header.php");?>
-    <table border>
-        <thead>
-            <th>Posté le :</th>
-            <th>Par utilisateur</th>
-            <th>Commentaires</th>
-        </thead>
-        <tbody>
+    <main>
+        <section>
+        <h1 class="golden_book_title">Livre d'or</h1>    
+
             <?php foreach ($data as $info) {
                 $dateold = $info[0];
                 $date = date('d-m-Y H:i:s', strtotime($dateold));
-                echo '<tr>
-                        <td>'.$date.'</td>
-                        <td>'.$info[1].'</td>
-                        <td>'.$info[2].'</td>
-                      </tr>';
+                $pseudo = $info[1]; 
+                $comment = $info[2];   
+                
+                echo '<div class="comment_box">
+                        <div class="user_info_box">
+                            <img src="import/profil-vide.png" class="profil_picture" alt="image de profil">
+                            <div>
+                                <h3>'.$pseudo.'</h3>
+                                <p>posté le '.$date.' </p>
+                            </div>
+                        </div>
+                        <div class="comment_display">
+                            <p>'.$comment.'</p>
+                        </div>
+                      </div>';      
             }
             ?>
-        </tbody>    
-    </table>
+            
+            
+
+        </section>    
+    </main>
 </body>
 </html>

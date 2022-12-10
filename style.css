@@ -9,11 +9,12 @@
     box-sizing: border-box;
 }
 body {
-    background-image: url("import/plage.jpg");
-    background-repeat: no-repeat;
+    /*background-image: url("import/plage.jpg");*/
+    /*background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
-    overflow: ;
+    height: 100vh;*/
+    /*overflow: ;*/
+    overflow: hidden;
 }
 
 header {
@@ -39,6 +40,14 @@ header ul {
     height: 70px;
     font-family: fantasy;
     font-size: 22px;
+}
+
+main {
+    background-image: url("import/plage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: auto;
 }
 
 li a {
@@ -145,4 +154,51 @@ h1 {
 
 .space-bottom-connect {
     margin-bottom: 165px;
+}
+
+/*****************livre-or.php************************/
+
+section {
+    height: 100vh;
+
+}
+
+.golden_book_title {
+    text-align: center;
+    font-family: system-ui;
+    color: gold;
+    padding: 25px 0px;
+    font-size: 53px;
+}
+
+.comment_box {
+    width: 35%;
+    /*height: 100px;*/
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding-bottom: 5px;
+    font-family: monospace;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.user_info_box {
+    display: flex;
+    padding: 8px;
+}
+
+.profil_picture {
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+
+.comment_display {
+    /*border: 1px solid black;*/
+    word-break: break-word;
+    margin: 10px 14px;
+}
+
+.comment_display p {
+    padding: 7px;
 }
