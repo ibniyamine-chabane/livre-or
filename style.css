@@ -88,6 +88,8 @@ li a {
     border: 1px solid black;
     border-radius: 13px;
     box-shadow: 0px 0px 14px 0px;
+    background-color: #ffffff73;
+    font-family: monospace;
 }
 
 table {
@@ -155,6 +157,35 @@ h1 {
 .space-bottom-connect {
     margin-bottom: 165px;
 }
+
+/****************profil.php***************************/
+
+.container_profil {
+    width: 80%;
+    margin: auto;
+    padding-top: 40px;
+    font-family: monospace;
+}
+
+.container_profil h1 {
+    font-size: 28px;
+    color: white;
+}
+
+.form_flex {
+    display: flex;
+}
+
+.profil_title {
+    margin:  23px 0px;
+}
+
+.container-form h2 {
+    color: white;
+    text-shadow: 1px 1px red;
+    text-align: center;
+}
+
 
 /*****************livre-or.php************************/
 
