@@ -23,7 +23,7 @@ $data = $request->fetch_all();
         } else {
             $message = "le champ est vide, veuillez écrire votre commentaire";
         }
-
+ 
         if ($send_comment) {
             $request = $connectDatabase->query("INSERT INTO commentaires(commentaire,id_utilisateur,date) VALUES ('$comment', '$userId', NOW())");
             header("Location:livre-or.php");

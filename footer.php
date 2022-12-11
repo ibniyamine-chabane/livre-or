@@ -7,4 +7,4 @@
             <a href="https://www.linkedin.com/in/ibni-yamine/"><img style="width:100%,height:100%" src="https://www.pngplay.com/wp-content/uploads/9/Linkedin-Free-PNG.png" alt="logo de linkedin"></a>
         </div>
     </div>
-</footer>
+</footer> 
