@@ -68,9 +68,9 @@
 
             if ( $_POST['current_password2'] && $_POST['new_password'] && $_POST['password_confirm'] ) {
                 
-                $current_password = trim($_POST['current_password2']); 
-                $new_password   = trim($_POST['new_password']);
-                $password_confirm = trim($_POST['password_confirm']);
+                $current_password = htmlspecialchars(trim($_POST['current_password2'])); 
+                $new_password   = htmlspecialchars(trim($_POST['new_password']));
+                $password_confirm = htmlspecialchars(trim($_POST['password_confirm']));
                 $change_password_ok = "non";
                 $current_password_check = "non";
 
@@ -170,5 +170,6 @@
             </div>    
         </section> 
     </main>
+    <?php include("footer.php"); ?>
 </body>
 </html>

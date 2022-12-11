@@ -14,7 +14,7 @@ body {
     background-size: cover;
     height: 100vh;*/
     /*overflow: ;*/
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 header {
@@ -46,7 +46,7 @@ main {
     background-image: url("import/plage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    /*height: 100vh;*/
     overflow: auto;
 }
 
@@ -232,4 +232,30 @@ section {
 
 .comment_display p {
     padding: 7px;
+}
+
+/***************footer****************/
+
+footer {
+    height: 80px;
+    width: 100%;
+    /*border: solid;*/
+    position:absolute; bottom:0;
+}
+
+footer div {
+    position: relative;
+    margin: 10px;
+}
+
+footer img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
 }

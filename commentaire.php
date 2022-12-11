@@ -21,11 +21,12 @@ $data = $request->fetch_all();
             $send_comment = true;
 
         } else {
-            echo "le champs est vide";
+            $message = "le champ est vide, veuillez écrire votre commentaire";
         }
 
         if ($send_comment) {
             $request = $connectDatabase->query("INSERT INTO commentaires(commentaire,id_utilisateur,date) VALUES ('$comment', '$userId', NOW())");
+            header("Location:livre-or.php");
         }
 
     }
@@ -46,13 +47,14 @@ $data = $request->fetch_all();
     <main> 
         <?php include("header.php");  ?>
         <section>
-            <form method="post">
-                <?= $message ?>
-                <label for="fcomment">utilisateur connecté</label>
-                <textarea name="comment" id="comment" cols="110" rows="10"></textarea>
+            <form class="container-form" method="post">
+                <p style="color:red"><?= $message ?></p>
+                <label for="fcomment">connecté en tant que :<?= $_SESSION['login']; ?></label>
+                <textarea name="comment" id="comment" cols="62" rows="10"></textarea>
                 <input type="submit" name="submit" value="envoyer">
             </form>
         </section>
     </main>
 </body>
+<?php include("footer.php"); ?>
 </html>

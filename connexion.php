@@ -54,7 +54,7 @@ $message = "";
 </head>
 <body>
     <?php  include("header.php");  ?>
-    <main>
+    <main style="height:100vh">
         <div class="container-form space-bottom-connect">
             <h1>Connexion</h1>
             <p class="msg-error"><?= $message ?></p>
@@ -67,5 +67,6 @@ $message = "";
             </form>
         </div>
     </main>
+    <?php include("footer.php"); ?>
 </body>
 </html>

@@ -18,7 +18,11 @@
                     <h1>Bienvenue</h1>
                 <?php endif; ?>     
             </div>
+            
         </section>
+        
     </main>
+    <?php include("footer.php"); ?>
+    
 </body>
 </html>
